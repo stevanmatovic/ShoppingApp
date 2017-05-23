@@ -65,4 +65,13 @@ public class Item extends BaseModel{
     public void setPrice(String price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Item{");
+        sb.append("name='").append(name).append('\'');
+        sb.append(", description='").append(description).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }
