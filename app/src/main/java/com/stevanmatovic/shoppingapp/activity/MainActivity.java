@@ -15,11 +15,13 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.Date;
 
 @EActivity(R.layout.activity_main)
+@OptionsMenu(R.menu.main_menu)
 public class MainActivity extends AppCompatActivity {
 
     @ViewById

@@ -1,6 +1,8 @@
 package com.stevanmatovic.shoppingapp.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Stevan on 5/23/2017.
@@ -9,17 +11,17 @@ import java.io.Serializable;
 public class User extends BaseModel implements Serializable {
 
     private String username;
+    private String password;
 
-    private String photoUrl;
+    private List<Item> userItems = new ArrayList<>();
 
 
     public User() {
     }
 
-    public User(String id, String username, String photoUrl) {
+    public User(String id, String username) {
         super(id);
         this.username = username;
-        this.photoUrl = photoUrl;
     }
 
     public String getUsername() {
@@ -30,19 +32,27 @@ public class User extends BaseModel implements Serializable {
         this.username = username;
     }
 
-    public String getPhotoUrl() {
-        return photoUrl;
+
+    public String getPassword() {
+        return password;
     }
 
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<Item> getUserItems() {
+        return userItems;
+    }
+
+    public void setUserItems(List<Item> userItems) {
+        this.userItems = userItems;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("User{");
         sb.append("username='").append(username).append('\'');
-        sb.append(", photoUrl='").append(photoUrl).append('\'');
         sb.append('}');
         return sb.toString();
     }
