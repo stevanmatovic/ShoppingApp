@@ -18,10 +18,10 @@ public class Item extends BaseModel{
     public Item() {
     }
 
-    public Item(String name, String description, Date date, String price, User user) {
+    public Item(String name, String description, String price, User user) {
         this.name = name;
         this.description = description;
-        this.date = date;
+        this.date = new Date();
         this.price = price;
         this.user = user;
     }

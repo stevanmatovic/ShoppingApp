@@ -10,6 +10,7 @@ import com.stevanmatovic.shoppingapp.View.ShoppingItemView_;
 import com.stevanmatovic.shoppingapp.dao.ItemDao;
 import com.stevanmatovic.shoppingapp.model.Item;
 
+import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
@@ -31,6 +32,11 @@ public class ItemAdapter extends BaseAdapter {
     @Bean
     ItemDao itemDao;
 
+
+    @AfterInject
+    void init(){
+        setItems(itemDao.getItems());
+    }
 
     @Override
     public int getCount() {
@@ -55,8 +61,18 @@ public class ItemAdapter extends BaseAdapter {
         }else{
             shoppingItemView = (ShoppingItemView) convertView;
         }
-        shoppingItemView.bind(getItem(position));
+        shoppingItemView.bind(items.get(position));
 
         return shoppingItemView;
+    }
+
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+        notifyDataSetChanged();
+    }
+
+    public List<Item> getItems() {
+        return items;
     }
 }

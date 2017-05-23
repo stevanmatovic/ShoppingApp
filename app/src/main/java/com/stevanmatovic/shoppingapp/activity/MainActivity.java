@@ -33,13 +33,15 @@ public class MainActivity extends AppCompatActivity {
 
     @AfterViews
     void init(){
-
         listView.setAdapter(itemAdapter);
+
     }
 
     @Click
     void fab(){
-        itemDao.write(new Item("Telefon", "LG K10", new Date(),"200eur", null));
+
+        itemDao.write(new Item("Patike","broj 42","2000",null));
+        itemAdapter.notifyDataSetChanged();
         Toast.makeText(MainActivity.this, itemDao.getItems().toString(), Toast.LENGTH_LONG).show();
     }
 

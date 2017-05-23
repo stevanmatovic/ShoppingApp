@@ -25,6 +25,9 @@ public class ShoppingItemView extends LinearLayout {
     @ViewById
     TextView description;
 
+    @ViewById
+    TextView price;
+
 
     public ShoppingItemView(Context context) {
         super(context);
@@ -33,6 +36,7 @@ public class ShoppingItemView extends LinearLayout {
     public void bind(Item item)
     {
         name.setText(item.getName());
-        description.setText(item.getDescription());
+        description.setText("Cena: "+item.getDescription());
+        price.setText(item.getPrice());
     }
 }

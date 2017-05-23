@@ -5,6 +5,7 @@ import android.content.Context;
 import com.stevanmatovic.shoppingapp.activity.MainActivity;
 import com.stevanmatovic.shoppingapp.model.Item;
 
+import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
@@ -29,9 +30,15 @@ public class ItemDao {
     private List<Item> items = new ArrayList<>();
 
 
+    @AfterInject
+    void init(){
+        readFromFile();
+    }
+
     public void write(Item item){
         items.add(item);
         updateFile();
+
 
     }
 
@@ -41,6 +48,7 @@ public class ItemDao {
 
     public void setItems(List<Item> items) {
         this.items = items;
+        updateFile();
     }
 
     public void readFromFile(){
@@ -49,6 +57,7 @@ public class ItemDao {
         try {
             fis = context.openFileInput(file);
             ois = new ObjectInputStream(fis);
+            items.clear();
             items = ((List<Item>)ois.readObject());
             ois.close();
             fis.close();
