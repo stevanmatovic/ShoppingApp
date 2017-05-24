@@ -27,6 +27,9 @@ import static android.Manifest.permission.READ_CONTACTS;
 @EActivity(R.layout.activity_login)
 public class LoginActivity extends AppCompatActivity{
 
+    public static final int USER_LOGGED = 14;
+
+
     @Bean
     UserDao userDao;
 
@@ -35,6 +38,13 @@ public class LoginActivity extends AppCompatActivity{
 
     @ViewById
     EditText password;
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 
     @Click
     void login(){
@@ -53,6 +63,7 @@ public class LoginActivity extends AppCompatActivity{
             }else{
                 Toast.makeText(this, "User " + user.getUsername() + " is logged", Toast.LENGTH_SHORT).show();
                 CurrentUser.setCurrentUser(user);
+                setResult(USER_LOGGED);
                 finish();
             }
         }

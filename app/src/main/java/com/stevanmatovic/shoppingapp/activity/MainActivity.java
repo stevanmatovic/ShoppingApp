@@ -2,6 +2,8 @@ package com.stevanmatovic.shoppingapp.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -12,6 +14,7 @@ import com.stevanmatovic.shoppingapp.dao.ItemDao;
 import com.stevanmatovic.shoppingapp.model.CurrentUser;
 import com.stevanmatovic.shoppingapp.model.Item;
 
+import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
@@ -19,6 +22,7 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
+import org.androidannotations.annotations.OptionsMenuItem;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.Date;
@@ -36,12 +40,23 @@ public class MainActivity extends AppCompatActivity {
     @Bean
     ItemAdapter itemAdapter;
 
+    @OptionsMenuItem(R.id.register)
+    MenuItem register;
+
+    @OptionsMenuItem(R.id.login)
+    MenuItem login;
+
+    @OptionsMenuItem(R.id.myItems)
+    MenuItem myItems;
+
+    @OptionsMenuItem(R.id.logout)
+    MenuItem logout;
+
     @AfterViews
     void init(){
         listView.setAdapter(itemAdapter);
-
-
     }
+
 
     @OptionsItem
     void gridSelected(){
@@ -74,7 +89,25 @@ public class MainActivity extends AppCompatActivity {
 
     @OptionsItem
     void loginSelected(){
-        LoginActivity_.intent(this).start();
+        LoginActivity_.intent(this).startForResult(2);
+
+    }
+
+    @OnActivityResult(2)
+    void logged(){
+        register.setVisible(false);
+        login.setVisible(false);
+        logout.setVisible(true);
+        myItems.setVisible(true);
+    }
+
+    @OptionsItem
+    void logoutSelected(){
+        CurrentUser.setCurrentUser(null);
+        register.setVisible(true);
+        login.setVisible(true);
+        logout.setVisible(false);
+        myItems.setVisible(false);
 
     }
 
