@@ -19,9 +19,9 @@ public class User extends BaseModel implements Serializable {
     public User() {
     }
 
-    public User(String id, String username) {
-        super(id);
-        this.username = username;
+    public User(String name, String password) {
+        this.username = name;
+        this.password = password;
     }
 
     public String getUsername() {

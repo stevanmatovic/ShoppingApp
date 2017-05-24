@@ -3,8 +3,8 @@
 
     <item android:id="@+id/logut"
         android:title="Logout"/>
-    <item android:id="@+id/myAccount"
-        android:title="My Account" />
+    <item android:id="@+id/myItems"
+        android:title="My Items" />
     <item android:id="@+id/login"
         android:title="Log in" />
     <item android:id="@+id/register"

@@ -2,6 +2,7 @@ package com.stevanmatovic.shoppingapp.dao;
 
 import android.content.Context;
 
+import com.stevanmatovic.shoppingapp.model.CurrentUser;
 import com.stevanmatovic.shoppingapp.model.Item;
 import com.stevanmatovic.shoppingapp.model.User;
 
@@ -36,11 +37,18 @@ public class UserDao {
 
 
     public void write(User user){
+        readFromFile();
         users.put(user.getUsername(),user);
         updateFile();
     }
 
-    private void readFromFile() {
+    public void write(Item i) {
+        User cur = users.get(CurrentUser.getCurrentUser().getUsername());
+        cur.getUserItems().add(i);
+        updateFile();
+    }
+
+    public void readFromFile() {
         FileInputStream fis = null;
         ObjectInputStream ois = null;
         try {
@@ -54,6 +62,8 @@ public class UserDao {
             e.printStackTrace();
         }
     }
+
+
 
     public void updateFile(){
         try {
@@ -75,4 +85,6 @@ public class UserDao {
     public void setUsers(HashMap<String, User> users) {
         this.users = users;
     }
+
+
 }

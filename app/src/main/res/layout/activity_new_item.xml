@@ -3,46 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_height="match_parent">
+    tools:context="com.stevanmatovic.shoppingapp.activity.NewItemActivity">
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:hint="User name"
+        android:hint="Name"
         android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:hint="Password"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/password"
-            android:inputType="textPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:hint="Retype password"
+        android:hint="Description"
         android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/passwordRepeat"
-            android:inputType="textPassword"
+            android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
     </android.support.design.widget.TextInputLayout>
-
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:hint="Price"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
     <Button
-        android:id="@+id/register"
+        android:id="@+id/add"
         style="@style/Base.Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Register" />
+        android:text="Finish"
+        android:layout_height="wrap_content" />
 </android.widget.LinearLayout>

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.stevanmatovic.shoppingapp.R;
 import com.stevanmatovic.shoppingapp.adapter.ItemAdapter;
 import com.stevanmatovic.shoppingapp.dao.ItemDao;
@@ -43,17 +42,34 @@ public class MainActivity extends AppCompatActivity {
 
     @OptionsItem
     void registerSelected(){
-        Toast.makeText(MainActivity.this,"klknut register",Toast.LENGTH_LONG).show();
         RegisterActivity_.intent(this).startForResult(1);
+
+    }
+
+    @OptionsItem
+    void myItemsSelected(){
+        if(CurrentUser.getCurrentUser() == null){
+            Toast.makeText(this,"You must be logged in",Toast.LENGTH_SHORT);
+            return;
+        }
+        UserItems_.intent(this).startForResult(1);
+    }
+
+    @OptionsItem
+    void loginSelected(){
+        LoginActivity_.intent(this).start();
+
     }
 
     @Click
     void fab(){
+        itemDao.updateFile();
 
         if(CurrentUser.getCurrentUser() == null)
             Toast.makeText(MainActivity.this, "You must be logged in to post items", Toast.LENGTH_LONG).show();
         else{
-
+            NewItemActivity_.intent(this).start();
+            itemAdapter.notifyDataSetChanged();
         }
     }
 
