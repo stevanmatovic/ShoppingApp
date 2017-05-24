@@ -19,7 +19,8 @@
         <activity android:name=".activity.RegisterActivity_" />
         <activity android:name=".activity.LoginActivity_" />
         <activity android:name=".activity.NewItemActivity_" />
-        <activity android:name=".activity.UserItems_"></activity>
+        <activity android:name=".activity.UserItems_" />
+        <activity android:name=".activity.EditItemActivity_"></activity>
     </application>
 
 </manifest>

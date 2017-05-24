@@ -87,4 +87,15 @@ public class UserDao {
     }
 
 
+    public void updateItem(Item i, int position) {
+
+        User u = CurrentUser.getCurrentUser();
+        Item item = u.getUserItems().get(position);
+
+        item.setName(i.getName());
+        item.setPrice(i.getPrice());
+        item.setDescription(i.getDescription());
+
+        updateFile();
+    }
 }

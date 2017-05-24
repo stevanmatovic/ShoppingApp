@@ -80,5 +80,16 @@ public class ItemDao {
     }
 
 
+    public void changeItem(Item item, String name, String price, String description) {
 
+
+        for (Item i:items) {
+            if(item.getName().equals(i.getName()) && item.getPrice().equals(i.getPrice()) && item.getDescription().equals(i.getDescription())) {
+                i.setName(name);
+                i.setDescription(description);
+                i.setPrice(price);
+            }
+        }
+        updateFile();
+    }
 }

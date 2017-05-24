@@ -2,6 +2,7 @@ package com.stevanmatovic.shoppingapp.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OnActivityResult;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
@@ -26,7 +28,7 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
 
     @ViewById
-    ListView listView;
+    GridView listView;
 
     @Bean
     ItemDao itemDao;
@@ -38,6 +40,15 @@ public class MainActivity extends AppCompatActivity {
     void init(){
         listView.setAdapter(itemAdapter);
 
+
+    }
+
+    @OptionsItem
+    void gridSelected(){
+        if(listView.getNumColumns() == 1)
+            listView.setNumColumns(2);
+        else
+            listView.setNumColumns(1);
     }
 
     @OptionsItem
@@ -53,6 +64,12 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         UserItems_.intent(this).startForResult(1);
+        itemAdapter.notifyDataSetChanged();
+    }
+
+    @OnActivityResult(1)
+    void update(){
+        itemAdapter.notifyDataSetChanged();
     }
 
     @OptionsItem

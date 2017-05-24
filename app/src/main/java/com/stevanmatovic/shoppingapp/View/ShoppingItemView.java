@@ -36,7 +36,7 @@ public class ShoppingItemView extends LinearLayout {
     public void bind(Item item)
     {
         name.setText(item.getName());
-        description.setText("Cena: "+item.getDescription());
-        price.setText(item.getPrice());
+        description.setText(item.getDescription());
+        price.setText("Cena: " + item.getPrice());
     }
 }

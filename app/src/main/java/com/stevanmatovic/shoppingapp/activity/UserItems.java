@@ -14,6 +14,7 @@ import com.stevanmatovic.shoppingapp.model.Item;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ItemClick;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.List;
@@ -39,6 +40,18 @@ public class UserItems extends AppCompatActivity {
         itemAdapter.setItems(currentUserItems);
         listView.setAdapter(itemAdapter);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
+    @ItemClick(R.id.listView)
+    void itemClick(int position){
+        Item i = itemAdapter.getItem(position);
+        EditItemActivity_.intent(this).position(position).start();
+        itemAdapter.notifyDataSetChanged();
     }
 
 }

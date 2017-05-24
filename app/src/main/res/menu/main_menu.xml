@@ -9,4 +9,6 @@
         android:title="Log in" />
     <item android:id="@+id/register"
         android:title="Register" />
+    <item android:id="@+id/grid"
+        android:title="Change grid" />
 </menu>
