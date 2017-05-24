@@ -41,6 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @OptionsItem
+    void registerSelected(){
+        Toast.makeText(MainActivity.this,"klknut register",Toast.LENGTH_LONG).show();
+        RegisterActivity_.intent(this).startForResult(1);
+    }
+
     @Click
     void fab(){
 
